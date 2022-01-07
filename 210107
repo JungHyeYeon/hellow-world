@@ -1,0 +1,50 @@
+<style>
+  // top이 멈출 높이
+  .menu.active{position:fixed; top:0;}
+</style>
+
+<script>
+  $(document).ready(function(){
+    //메뉴 위치 확인
+    var fixOffset = $('.menu').offset();
+    
+    //class로 fixed 하기
+    $(window).scroll(function(){
+      if($(document).scrollTop() > fixOffset.top){
+        $('.menu').addClass('active');
+      }
+      else {
+        $('.menu').removeClass('active');
+      }
+    });
+  });
+</script>
+
+//예제 1
+<div><p>요소</p></div>
+<button>요소의 위치 정보</button>
+<span></span>
+
+<script>
+  $(function() {
+    $('button').on('click', function(){
+      var txt = $('p').offset();
+      $('span').text('top: ' + txt.top + 'px, left: ' + txt.left + 'px');
+    });
+  });
+</script>
+
+//예제 2
+<div><p>요소</p></div>
+<button>요소의 위치 정보</button>
+<span></span>
+
+<script>
+  $(function(){
+    $('button').on('click', function(){
+      $('p').offset({top:200, left:10});
+    });
+  })
+</script>
+
+
