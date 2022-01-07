@@ -1,5 +1,5 @@
 <style>
-  // top이 멈출 높이
+  /* top이 멈출 높이 */
   .menu.active{position:fixed; top:0;}
 </style>
 
@@ -47,4 +47,31 @@
   })
 </script>
 
+//예제 3 
+<style>
+/* 스크롤을 위한 박스 세팅 */
+.box {border: 2px solid #ccc; width: 150px; height: 100px; overflow: scroll; white-space:nowrap;}
+</style>
 
+<div class="box">
+  <p>스크롤을 움직이면, </p>
+  <p>자동으로 스크롤 위치 정보가 변경됩니다.</p>
+  <p>스크롤을 움직여 보세요.</p>
+  <p>도로록</p>
+</div>
+<button>스크롤 위치 변경</button>
+<span></span>
+
+<script>
+$(function(){
+	$('button').on('click', function(){
+    	$('.box').scrollTop(20);
+      	$('.box').scrollLeft(30);
+    });
+  $('.box').on('scroll', function(){
+  	var S_left = $(this).scrollLeft();
+    var S_top = $(this).scrollTop();
+    $('span').text('left:' + S_left + ', Top' + S_top);
+  });
+});
+</script>
